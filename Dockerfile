@@ -1,9 +1,15 @@
 FROM ubuntu:trusty
-MAINTAINER Yuji ODA
+MAINTAINER Yuji ODA / Gus
+
+# Install add-apt-repository
+RUN apt-get update; \
+    apt-get -y install software-properties-common python-software-properties
+
+# Install ppa for java8
+RUN add-apt-repository ppa:openjdk-r/ppa
 
 # Installing Dependencies
-RUN apt-get update; \
-    apt-get -y install supervisor screen python-cherrypy3 rdiff-backup git openjdk-7-jre-headless; \
+RUN apt-get -y install supervisor screen python-cherrypy3 rdiff-backup git openjdk-8-jre-headless; \
     apt-get -y install openssh-server uuid pwgen
 
 # Installing MineOS scripts
